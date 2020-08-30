@@ -1,22 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Senil Documentation</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css">
-
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css">
+  <style>
+    input:focus, textarea:focus, button:focus, a:focus, h3:focus {
+      outline: none;
+    }
+    h3:focus {
+      background: #282828;
+    }
+    input, textarea {
+      background: #282828;
+      border-radius: 4px;
+      padding: 8px;
+      border: 1px solid rgba(0, 0, 0, 0);
+      min-width: 196px;
+      margin: 8px 0;
+      color: #ea6f5a;
+      transition: all 350ms ease;
+    }
+    input:focus, textarea:focus {
+      border: 1px solid #ea6f5a;
+      box-shadow: 0 3px 6px #18181885;
+    }
+    input:hover, textarea:hover {
+      background: #303030;
+      box-shadow: 0 6px 12px #18181850;
+    }
+    button {
+      border: none;
+      border-radius: 4px;
+      padding: 6px;
+      min-width: 64px;
+      background: #ea6f5a;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'Senil Documentation',
-      repo: 'https://github.com/mrfarhadir/senilwebsite.git'
+      repo: 'https://github.com/mrfarhadir/senilwebsite.git',
+      loadSidebar: true,
     }
   </script>
+
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="senil.js"></script>
+  <script>
+    var senil_increase;
+    var senil_basic;
+    var senil_content;
+    window.addEventListener('load', (e) => {
+      senil_increase = new Senil({
+        count: 1
+      });
+      senil_basic = new Senil({
+        name: '',
+        email: '',
+        message: ''
+      });
+      senil_content = new Senil({
+        title: 'Senil is awesome!'
+      })
+    });
+
+    function plus() {
+      senil_increase.set({
+        count: senil_increase.state.count + 1
+      })
+    }
+    function minus() {
+      senil_increase.set({
+        count: senil_increase.state.count - 1
+      })
+    }
+
+    function send() {
+      let body = `
+        Name: ${senil_basic.state.name} \r\n
+        Email: ${senil_basic.state.email} \r\n
+        Message: ${senil_basic.state.message} \r\n
+      `
+      alert(body)
+    }
+
+    function show_content() {
+      alert(senil_content.state.title)
+    }
+  </script>
 </body>
+
 </html>
