@@ -51,8 +51,43 @@
     window.$docsify = {
       name: 'Senil Documentation',
       repo: 'https://github.com/mrfarhadir/senilwebsite.git',
-      loadSidebar: true,
+      loadSidebar: 'sidebar.md',
+      coverpage: true,
+
     }
+
+    function initJs(hook, vm) {
+      hook.doneEach(function () {
+        let r = vm.route.path;
+        if (r === '/usage/increase') {
+          senil_increase = new Senil({
+            count: 1
+          });
+        }
+        if (r === '/usage/basic') {
+          senil_basic = new Senil({
+            title: 'Hi I\'m Senil'
+          });
+        }
+
+        if (r === '/usage/form') {
+          senil_form = new Senil({
+            name: 'Your Name',
+            email: 'email@example.com',
+            message: 'Hi this is my message'
+          });
+        }
+
+        if (r === '/usage/content') {
+          senil_content = new Senil({
+            text: 'Senil is awesome!'
+          })
+        }
+      });
+    }
+
+    // Add to plugin array
+    window.$docsify.plugins = [].concat(initJs, $docsify.plugins);
   </script>
 
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -61,19 +96,7 @@
     var senil_increase;
     var senil_basic;
     var senil_content;
-    window.addEventListener('load', (e) => {
-      senil_increase = new Senil({
-        count: 1
-      });
-      senil_basic = new Senil({
-        name: '',
-        email: '',
-        message: ''
-      });
-      senil_content = new Senil({
-        title: 'Senil is awesome!'
-      })
-    });
+    var senil_form;
 
     function plus() {
       senil_increase.set({
@@ -88,15 +111,15 @@
 
     function send() {
       let body = `
-        Name: ${senil_basic.state.name} \r\n
-        Email: ${senil_basic.state.email} \r\n
-        Message: ${senil_basic.state.message} \r\n
+        Name: ${senil_form.state.name} \r\n
+        Email: ${senil_form.state.email} \r\n
+        Message: ${senil_form.state.message} \r\n
       `
       alert(body)
     }
 
     function show_content() {
-      alert(senil_content.state.title)
+      alert(senil_content.state.text)
     }
   </script>
 </body>
