@@ -10,6 +10,9 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css">
   <style>
+    .cover * {
+      color: #111 !important;
+    }
     input:focus, textarea:focus, button:focus, a:focus, h3:focus {
       outline: none;
     }
@@ -55,22 +58,21 @@
       coverpage: true,
 
     }
-
     function initJs(hook, vm) {
       hook.doneEach(function () {
         let r = vm.route.path;
-        if (r === '/usage/increase') {
+        if (r === '/examples/increase') {
           senil_increase = new Senil({
             count: 1
           });
         }
-        if (r === '/usage/basic') {
+        if (r === '/examples/basic') {
           senil_basic = new Senil({
             title: 'Hi I\'m Senil'
           });
         }
 
-        if (r === '/usage/form') {
+        if (r === '/examples/form') {
           senil_form = new Senil({
             name: 'Your Name',
             email: 'email@example.com',
@@ -78,7 +80,7 @@
           });
         }
 
-        if (r === '/usage/content') {
+        if (r === '/examples/content') {
           senil_content = new Senil({
             text: 'Senil is awesome!'
           })
