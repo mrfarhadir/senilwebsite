@@ -2,6 +2,8 @@
 
 States are very useful for web app development. popular frameworks such as Vuejs or React has state for their components and Senil is like that when you are using pure HTML with out any frameworks or when you are developing Wordpress theme.
 
+[Documentation](//senil.js.org)
+
 ### Feathers
 > - Having multiple instance
 > - Synchronize with localstorage
