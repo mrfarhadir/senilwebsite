@@ -22,4 +22,4 @@ let senil_basic = new Senil({
 })
 ``` 
 Senil class has state property which helps you to access to your current data 
-See [Basic Example](/usage/basic.md)
+See [Basic Example](/examples/basic.md)
