@@ -25,3 +25,5 @@ let senil_basic = new Senil({
 ``` 
 Senil class has state property which helps you to access to your current data 
 See [Basic Example](/examples/basic.md)
+<br>
+Two way icon made by <a href="https://www.flaticon.com/free-icon/two-way_2399313?term=two%20way&page=1&position=42" title="surang">surang</a>
